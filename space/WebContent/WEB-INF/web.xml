@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<display-name>mywebproject</display-name>
+	<display-name>space</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -16,7 +16,7 @@
 		</servlet-mapping> -->
 	<servlet>
 	    <servlet-name>loginJSP</servlet-name>
-	    <jsp-file>/pages/login/login.jsp</jsp-file>
+	    <jsp-file>/pages/login.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>loginJSP</servlet-name>
@@ -37,8 +37,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-          /WEB-INF/applicationContext.xml
-      </param-value>
+     	</param-value>
 	</context-param>
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>

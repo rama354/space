@@ -12,12 +12,14 @@ import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
+import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
 import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 
 import com.space.social.helpers.SocialContext;
+
 
 @Configuration
 public class FaceBookConfig implements InitializingBean {
@@ -104,8 +106,7 @@ public class FaceBookConfig implements InitializingBean {
 	  public void afterPropertiesSet() throws Exception 
 	  {
 
-	    JdbcUsersConnectionRepository usersConnectionRepositiory = new JdbcUsersConnectionRepository(dataSource,
-	        connectionFactoryLocator(), Encryptors.noOpText());
+		InMemoryUsersConnectionRepository usersConnectionRepositiory = new InMemoryUsersConnectionRepository(connectionFactoryLocator());
 
 	    this.usersConnectionRepositiory = usersConnectionRepositiory;
 	    socialContext = new SocialContext(usersConnectionRepositiory, getFacebook());

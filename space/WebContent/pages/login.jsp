@@ -7,28 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/themes/login/login.css" />
-<!-- <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/themes/common.css" />-->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/scripts/main.js"></script>
 <title>MWAS Login</title>
 </head>
 <body bgcolor="white">
 	<div id="login-box">
-	<form method="post" action="/space/facebook.htm">
-		<label>Username : </label><input type="text" name="user" /> <label>Password
-			:  </label><input type="password" name="password" />
-		<table style="width: 321px;">
-			<tr>
-				<td><button type="submit" name="submit" value="signIn"
-						class="signin"
-						onclick=" return verifylogin(this.form.user.value,this.form.password.value);">Sign
-						In</button></td>
-
-				<td><button type="submit" name="submit" value="forgetPassword"
-						class="forgetpwd">Forget Password</button></td>
-			</tr>
-		</table>
+	<form method="post" action="/space/facebook.htm">			 
+		<p>You are not connected to FB. Click below button</p>
+		<p><button type="submit" name="submit"  
+						class="signin">Connect to FaceBook</button></p>
 	</form>
 	</div>
 </body>

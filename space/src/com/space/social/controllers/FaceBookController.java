@@ -1,4 +1,4 @@
-package com.space.spring.controllers;
+package com.space.social.controllers;
 /**
  * 
  */
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.api.FeedOperations;
 import org.springframework.social.facebook.api.Post;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ import com.space.social.helpers.SocialContext;
 
  
 /**
- * @author asus
+ * @author kartik
  *
  */
 @Controller
@@ -44,28 +45,26 @@ public class FaceBookController {
 	
 	public FaceBookController() 
 	{
-		homepageMV = new ModelAndView("facebookposts");
-		loginpageMV = new ModelAndView("/login/login");
+		homepageMV = new ModelAndView("helloFB");
 	}
 	
-	@RequestMapping(value="/facebook.htm" , method= RequestMethod.GET,params="submit=signIn")
-	public ModelAndView signIn(HttpServletRequest arg0,
-			HttpServletResponse arg1) throws Exception 
+	@RequestMapping(value="/" , method= RequestMethod.GET)
+	public String signIn() throws Exception 
 	{
 			 
-		ModelAndView nextView;
-
-		if (socialContext.isSignedIn(arg0, arg1)) 
-		{
-				List<Post> posts = retrievePosts();
-				homepageMV.addObject("posts", posts);
-				 
+		Facebook facebook = socialContext.getFacebook();
+		if (facebook != null && facebook.isAuthorized()) 
+		{			
+			homepageMV.addObject(facebook.userOperations().getUserProfile());
+	        List<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
+	        homepageMV.addObject("friends", friends);				 
 		} 
 		else 
 		{
-			nextView = loginpageMV;
+			return "redirect:/space/facebook.htm";
 		}
-		return nextView;
+		
+		return "hello";
 			
 	 }
 	
@@ -82,16 +81,7 @@ public class FaceBookController {
 	
 		return posts;
 		
-		}
-	
-	@RequestMapping(value="/forgotPassword.htm" , method= RequestMethod.GET,params="submit=forgetPassword")
-	public ModelAndView forgetPassword(HttpServletRequest arg0,
-			HttpServletResponse arg1) throws Exception
-	{
-		return null;
-		
 	}
-	
 	 
 	
 	/*@RequestMapping(value="/home.htm" , method= RequestMethod.POST,params="submit=signout")

@@ -4,22 +4,21 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-	<context:component-scan base-package="com.mwas.spring" annotation-config="true"/>
-	<import resource="MWAS-security.xml" />
+	<context:component-scan base-package="com.space.social" annotation-config="true"/>
 	<bean id="paramResolver"
 		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
 		<property name="paramName" value="submit" />
 	</bean>
-	<bean id="faceBookController" class="com.space.spring.controllers.FaceBookController">
+	<bean id="faceBookController" class="com.space.social.controllers.FaceBookController">
 		<!-- <property name="authService" ref="authService" /> -->
 		<property name="methodNameResolver" ref="paramResolver" />
 	</bean>
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost/mywebproject"/>
 		<property name="username" value="root"/>
 		<property name="password" value="l00nie"/>
-	</bean>
+	</bean> -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/pages/" />
