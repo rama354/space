@@ -1,0 +1,86 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	/*border: thin gray;*/
+	/*border-style: solid;*/
+	padding-left: 520px;
+	padding-top:50px;
+	border-left-width: 100%;
+	border-right-width: 100%;
+	border-top-width: 100%;
+	border-bottom-width: 100%;
+}
+
+#sslform
+{
+ width:200px;
+ height:200px;
+ padding-left: 700px;	
+}
+
+#sslform form button
+{
+width:100px;	
+height:50px;
+text-shadow:2px 2px 2px gray;
+
+background-color: #FA2;
+border-radius:5px;
+font-weight: 600;
+font-family: sans-serif;
+}
+
+#login-box
+{
+  width: 300px;
+	
+}
+#login-box form 
+{
+	display: block;
+	width: 250px;
+	padding: 10px;
+	border: 2px solid black;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-box-shadow: 0px 5px 5px grey;
+	-webkit-box-shadow: 0px 5px 5px grey;
+}
+
+label {
+	font-family: fantasy;
+	font-size: small;
+	font-style: italic;
+}
+
+button.signin {
+	width: 80px;
+	color: black;
+	text-transform: uppercase;
+	text-shadow: #000 1px 1px;
+	/*border-top: 1px solid #ad64e0;*/
+	margin-top: 10px;
+	background-color: #C0C0C0;
+	border-radius:5px;
+	font-weight: 600;
+	font-family: sans-serif;
+	/*background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#963AD6),
+		to(#781bb9) );
+	background: -moz-linear-gradient(19% 75% 90deg, #781bb9, #963AD6);*/
+}
+
+button.forgetpwd {
+	width: 120px;
+	color: black;
+	text-transform: uppercase;
+	text-shadow: #001 1px 1px;
+	border-top: 1px solid #ad64e0;
+	margin-top: 10px;
+	background-color: #C0C0C0;
+	border-radius:5px;
+	font-weight: 600;
+	font-family: sans-serif;
+	/*background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#963AD6),
+		to(#781bb9) );
+	background: -moz-linear-gradient(19% 75% 90deg, #781bb9, #963AD6);*/
+}

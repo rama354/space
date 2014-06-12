@@ -18,6 +18,7 @@ import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 
+import com.space.security.helpers.SecurityContext;
 import com.space.social.helpers.SocialContext;
 
 
@@ -31,8 +32,8 @@ public class FaceBookConfig implements InitializingBean {
 
 	  private UsersConnectionRepository usersConnectionRepositiory;
 
-	  @Inject
-	  private DataSource dataSource;
+	  //@Inject
+	  //private DataSource dataSource;
 
 	  /**
 	   * Point to note: the name of the bean is either the name of the method
@@ -72,7 +73,7 @@ public class FaceBookConfig implements InitializingBean {
 	  @Bean
 	  @Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
 	  public ConnectionRepository connectionRepository() {
-	    String userId = socialContext.getUserId();
+	    String userId =  SecurityContext.getCurrentUser().getId();
 	    //logger.info("Createung ConnectionRepository for user: " + userId);
 	    return usersConnectionRepository().createConnectionRepository(userId);
 	  }
