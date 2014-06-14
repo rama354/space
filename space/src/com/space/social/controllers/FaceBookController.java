@@ -49,11 +49,12 @@ public class FaceBookController {
 	}
 	
 	@RequestMapping(value="/" , method= RequestMethod.GET)
-	public String signIn() throws Exception 
+	public String signIn(HttpServletRequest arg0,
+			HttpServletResponse arg1) throws Exception 
 	{
 			 
 		Facebook facebook = socialContext.getFacebook();
-		if (facebook != null && facebook.isAuthorized()) 
+		if (socialContext.isSignedIn(arg0, arg1)) 
 		{			
 			homepageMV.addObject(facebook.userOperations().getUserProfile());
 	        List<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
@@ -16,6 +17,7 @@ import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
 import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 
 import com.space.security.helpers.SecurityContext;
@@ -73,7 +75,8 @@ public class FaceBookConfig implements InitializingBean {
 	  @Bean
 	  @Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
 	  public ConnectionRepository connectionRepository() {
-	    String userId =  SecurityContext.getCurrentUser().getId();
+	   // String userId =  SecurityContext.getCurrentUser().getId();
+		  String userId = socialContext.getUserId();
 	    //logger.info("Createung ConnectionRepository for user: " + userId);
 	    return usersConnectionRepository().createConnectionRepository(userId);
 	  }
@@ -88,7 +91,9 @@ public class FaceBookConfig implements InitializingBean {
 	  @Bean
 	  @Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
 	  public Facebook getFacebook() {
-	    return connectionRepository().getPrimaryConnection(Facebook.class).getApi();
+		  Connection<Facebook> connection = connectionRepository().findPrimaryConnection(Facebook.class);
+		  Facebook facebook = connection != null ? connection.getApi() : new FacebookTemplate();
+		  return facebook;
 	  }
 
 	  /**
