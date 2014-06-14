@@ -19,6 +19,7 @@ import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.NativeWebRequest;
 
@@ -41,13 +42,13 @@ public class SocialContext implements ConnectionSignUp, SignInAdapter {
     private final Facebook facebook;
     
 	@Inject
-	public SocialContext(UsersConnectionRepository connectionRepository,
-		      Facebook facebook)
+	public SocialContext(UsersConnectionRepository connectionRepository
+		      )
 	{
 		//this.requestCache = requestCache;
 		this.connectionRepository = connectionRepository;
 	    //this.userCookieGenerator = userCookieGenerator;
-	    this.facebook = facebook;
+	    this.facebook = new FacebookTemplate();
 	}
 
 	@Override

@@ -115,7 +115,7 @@ public class FaceBookConfig implements InitializingBean {
 		InMemoryUsersConnectionRepository usersConnectionRepositiory = new InMemoryUsersConnectionRepository(connectionFactoryLocator());
 
 	    this.usersConnectionRepositiory = usersConnectionRepositiory;
-	    socialContext = new SocialContext(usersConnectionRepositiory, getFacebook());
+	    socialContext = new SocialContext(usersConnectionRepositiory);
 
 	    usersConnectionRepositiory.setConnectionSignUp(socialContext);
 	    
